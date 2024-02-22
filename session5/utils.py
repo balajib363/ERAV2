@@ -15,6 +15,7 @@ def check_cuda_availability():
   return torch.cuda.is_available()
 
 def create_train_transforms():
+  '''Output: return the Transformed train data'''
   train_transforms = transforms.Compose([
     transforms.RandomApply([transforms.CenterCrop(22), ], p=0.1),
     transforms.Resize((28, 28)),
@@ -25,6 +26,7 @@ def create_train_transforms():
   return train_transforms
 
 def create_test_transforms():
+  '''Output: return the Transformed test data'''
   test_transforms = transforms.Compose([
     transforms.ToTensor(),
     transforms.Normalize((0.1307,), (0.3081,))
@@ -32,9 +34,11 @@ def create_test_transforms():
   return test_transforms
   
 def GetCorrectPredCount(pPrediction, pLabels):
+  '''Output: return the total number of correct prediction'''
   return pPrediction.argmax(dim=1).eq(pLabels).sum().item()
 
 def train(model, device, train_loader, optimizer, criterion):
+  '''Function used to train the model'''
   model.train()
   pbar = tqdm(train_loader)
 
@@ -66,6 +70,7 @@ def train(model, device, train_loader, optimizer, criterion):
   train_losses.append(train_loss/len(train_loader))
 
 def test(model, device, test_loader, criterion):
+    '''Function used to test the model'''
     model.eval()
 
     test_loss = 0
@@ -90,6 +95,7 @@ def test(model, device, test_loader, criterion):
         100. * correct / len(test_loader.dataset)))
 
 def plot_metrics():
+  '''Function used to plot the train metrics'''
   fig, axs = plt.subplots(2,2,figsize=(15,10))
   axs[0, 0].set_title("Training Loss")
   axs[0, 0].plot(train_losses)
@@ -101,9 +107,11 @@ def plot_metrics():
   axs[1, 1].set_title("Test Accuracy")
 
 def set_optimizer(Model):
+  '''Output: return the optimizer for training the NN'''
   return optim.SGD(Model.parameters(), lr=0.01, momentum=0.9)
 
 def set_lr(optimizer):
+  '''Output: return the learning rate scheduler value for training the NN'''
   return optim.lr_scheduler.StepLR(optimizer, step_size=15, gamma=0.1, verbose=True)
     
 

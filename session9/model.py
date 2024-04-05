@@ -621,18 +621,17 @@ class Model_S9(nn.Module):
             nn.Conv2d(in_channels=64, out_channels=10, kernel_size=(1, 1), padding=0, bias=False),
         )
 
-        self.dropout = nn.Dropout(dropout_value)
 
     def forward(self, x):
-        x = self.convblock1(x) # 32 -> 30 | 1>3 |
+        x = self.convblock1(x) 
         x = self.convblock1x1a(x)
-        x = self.convblock2(x) # 30 -> 28 | 3>5 |
-        x = self.convblock1x1b(x) # 28 -> 28 | 3>5 |
-        x = self.convblock3(x) # 28 -> 13 | 5>5 |
-        x = self.convblock1x1c(x) # 28 -> 28 | 3>5 |
-        x = self.convblock4(x) # 13 -> 11 | 6>10 |
-        x = self.convblock1x1d(x) # 11 -> 11 | 6>10 |
-        x = self.gap(x)         # 11 -> 1 |
+        x = self.convblock2(x) 
+        x = self.convblock1x1b(x) 
+        x = self.convblock3(x) 
+        x = self.convblock1x1c(x) 
+        x = self.convblock4(x) 
+        x = self.convblock1x1d(x) 
+        x = self.gap(x)         
         x = self.convblock5(x)
 
         x = x.view(-1, 10)

@@ -1,6 +1,6 @@
 import albumentations as A
 from albumentations.pytorch import ToTensorV2
-from albumentations import Compose, RandomCrop, Normalize, HorizontalFlip, ShiftScaleRotate, PadIfNeeded, CoarseDropout,Cutout
+from albumentations import Compose, RandomCrop, Normalize, HorizontalFlip, ShiftScaleRotate, PadIfNeeded, Cutout
 import numpy as np
 from torchvision import datasets, transforms
 import torch
@@ -31,7 +31,7 @@ class album_test():
     def __call__(self,img):
         img = np.array(img)
         img = self.transform(image=img)['image']
-        return img 
+        return img
 
 class load_dataset():
     def __init__(self):        

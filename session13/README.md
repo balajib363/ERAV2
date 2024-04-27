@@ -23,7 +23,13 @@ File ERAV2_S13.ipynb notebook contains the pytorch lighting code for training th
 
 The trained model is deployed using Gradio spaces, below shared the link to access the demo.
 
-### Model details
+## Loss function used
+
+PyTorch NLLLOSS has its long-form as Negative Log-Likelihood Loss which is the metric that is extensively used while dealing with C classes whenever the training of the C classes is being performed.  
+Log probabilities should be added in each of the class while providing the input in case of forward call.
+
+### Model Training details
+Model size: 89.5 MB  
 Trained Epoch: 50  
 test_acc : 93%  
 test_loss : 0.29

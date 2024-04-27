@@ -18,5 +18,21 @@
 &nbsp;&nbsp;&nbsp;&nbsp;	3.Submit the GitHub Link where Lightning Code can be found along with detailed README with log, loss function graphs, and 10 misclassified images
 
 
-The **10 misclassified images** :   
+## Solution
+File ERAV2_S13.ipynb notebook contains the pytorch lighting code for training the cifar10 dataset with the resnet architecture.  
+
+The trained model is deployed using Gradio spaces, below shared the link to access the demo.
+
+### Model details
+Trained Epoch: 50  
+test_acc : 93%  
+test_loss : 0.29
+
+
+## The **10 misclassified images** :   
 ![miss_classified](./images/missclassified.png)
+
+## 🎧 Gradio App
+A user-friendly interface constructed using Gradio. This app enables users to upload custom images and view model predictions.
+
+[Link to Gradio App](https://huggingface.co/spaces/balajib197/erav2s13demo)

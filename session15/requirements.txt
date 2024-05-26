@@ -1,0 +1,7 @@
+pillow
+numpy
+torch
+torchvision
+opencv-python
+ipython
+seaborn

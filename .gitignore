@@ -1,1 +1,3 @@
 session13/weights/model_60.ckpt
+session13/__pycache__/
+session15/weights/best.pt
